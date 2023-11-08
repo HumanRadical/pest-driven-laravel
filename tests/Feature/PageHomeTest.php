@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Course;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use function Pest\Laravel\get;
