@@ -8,6 +8,8 @@ use function Pest\Laravel\get;
 uses(RefreshDatabase::class);
 
 it('shows courses overview', function () {
+    $this->withoutExceptionHandling();
+
     Course::factory()->create(['title' => 'Course A']);
     Course::factory()->create(['title' => 'Course B']);
     Course::factory()->create(['title' => 'Course C']);
