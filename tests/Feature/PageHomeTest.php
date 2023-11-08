@@ -9,8 +9,6 @@ use function Pest\Laravel\get;
 uses(RefreshDatabase::class);
 
 it('shows courses overview', function () {
-    $this->withoutExceptionHandling();
-
     Course::factory()->create(['title' => 'Course A', 'description' => 'Description Course A', 'released_at' => Carbon::now()]);
     Course::factory()->create(['title' => 'Course B', 'description' => 'Description Course B', 'released_at' => Carbon::now()]);
     Course::factory()->create(['title' => 'Course C', 'description' => 'Description Course C', 'released_at' => Carbon::now()]);
