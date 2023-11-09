@@ -8,6 +8,14 @@ use function Pest\Laravel\get;
 
 uses(RefreshDatabase::class);
 
+it('does not show details for unreleased course', function () {
+    $course = Course::factory()->create();
+
+    get(route('course-details', $course))
+        ->assertNotFound();
+});
+
+
 it('shows course details', function () {
     // Arrange
     $course = Course::factory()->create();
