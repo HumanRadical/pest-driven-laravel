@@ -19,8 +19,9 @@ it('only returns released courses for released scope', function () {
 
 it('has videos', function () {
     // Arrange
-    $course = Course::factory()->create();
-    Video::factory(3)->create(['course_id' => $course->id]);
+    $course = Course::factory()
+        ->has(Video::factory(3))
+        ->create();
 
     // Act & Assert
     expect($course->videos)

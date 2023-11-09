@@ -26,8 +26,9 @@ it('shows course details', function () {
 
 it('shows course video count', function () {
     // Arrange
-    $course = Course::factory()->create();
-    Video::factory(3)->create(['course_id' => $course->id]);
+    $course = Course::factory()
+        ->has(Video::factory(3))
+        ->create();
 
     // Act & Arrange
     get(route('course-details', $course))
