@@ -14,6 +14,6 @@ class PageCourseDetailsController extends Controller
             throw new NotFoundHttpException();
         }
 
-        return view('course-details', compact('course'));
+        return view('pages/course-details', compact('course'));
     }
 }

@@ -13,6 +13,6 @@ class PageHomeController extends Controller
             ->orderBy('released_at', 'desc')
             ->get();
 
-        return view('home', compact('courses'));
+        return view('pages/home', compact('courses'));
     }
 }
