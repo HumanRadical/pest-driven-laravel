@@ -33,13 +33,13 @@ it('shows only released courses', function () {
 
 it('shows courses by release date', function () {
     // Arrange
-    Course::factory()->create(['title' => 'Course A', 'released_at' => Carbon::yesterday()]);
-    Course::factory()->create(['title' => 'Course B', 'released_at' => Carbon::now()]);
+    $oldCourse = Course::factory()->released(Carbon::yesterday())->create();
+    $newCourse = Course::factory()->released()->create();
 
     // Act & Assert
     get(route('home'))
         ->assertSeeTextInOrder([
-            'Course B',
-            'Course A',
+            $newCourse->title,
+            $oldCourse->title,
         ]);
 });
