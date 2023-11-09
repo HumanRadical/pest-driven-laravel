@@ -21,7 +21,7 @@ it('shows course details', function () {
             $course->description,
             ...$course->learnings,
         ])
-        ->assertSee('image.png');
+        ->assertSee(asset("images/{$course->image}"));
 });
 
 it('shows course video count', function () {
