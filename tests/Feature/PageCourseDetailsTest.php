@@ -18,7 +18,7 @@ it('does not show details for unreleased course', function () {
 
 it('shows course details', function () {
     // Arrange
-    $course = Course::factory()->create();
+    $course = Course::factory()->released()->create();
 
     // Act & Assert
     get(route('course-details', $course))
@@ -35,6 +35,7 @@ it('shows course details', function () {
 it('shows course video count', function () {
     // Arrange
     $course = Course::factory()
+        ->released()
         ->has(Video::factory(3))
         ->create();
 
