@@ -22,13 +22,13 @@ it('shows courses overview', function () {
 
 it('shows only released courses', function () {
     // Arrange
-    Course::factory()->create(['title' => 'Course A', 'released_at' => Carbon::yesterday()]);
-    Course::factory()->create(['title' => 'Course B']);
+    $releasedCourse = Course::factory()->released()->create();
+    $unreleasedCourse = Course::factory()->create();
 
     // Act & Assert
     get(route('home'))
-        ->assertSeeText('Course A')
-        ->assertDontSeeText('Course B');
+        ->assertSeeText($releasedCourse->title)
+        ->assertDontSeeText($unreleasedCourse->title);
 });
 
 it('shows courses by release date', function () {
