@@ -19,10 +19,10 @@ it('lists purchased courses', function () {
     // Arrange
     $user = User::factory()
         ->has(Course::factory(2)->state(
-            new Sequence([
-                'title' => 'Course A',
-                'title' => 'Course B',
-            ])
+            new Sequence(
+                ['title' => 'Course A'],
+                ['title' => 'Course B'],
+            )
         ))
         ->create();
 
