@@ -22,6 +22,7 @@ it('shows course details', function () {
 
     // Act & Assert
     get(route('course-details', $course))
+        ->assertOk()
         ->assertSeeText([
             $course->title,
             $course->description,
@@ -40,5 +41,6 @@ it('shows course video count', function () {
 
     // Act & Arrange
     get(route('course-details', $course))
+        ->assertOk()
         ->assertSeeText('3 videos');
 });
