@@ -1,3 +1,3 @@
 <div>
-    {{-- In work, do what you enjoy. --}}
+    <h3>{{ $video->title }}</h3>
 </div>
