@@ -3,6 +3,7 @@
 use App\Livewire\VideoPlayer;
 use App\Models\Course;
 use App\Models\Video;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 
 use function Pest\Laravel\get;
 
@@ -40,5 +41,21 @@ it('shows first course video by default', function () {
 });
 
 it('shows provided course video', function () {
-    //expect()->
+    // Arrange
+    loginAsUser();
+    $course = Course::factory()
+        ->has(Video::factory(2)->state(
+            new Sequence(
+                ['title' => 'First Video'],
+                ['title' => 'Second Video'],
+            )))
+        ->create();
+
+    // Act & Assert
+    get(route('pages.course-videos', [
+        'course' => $course,
+        'video' => $course->videos()->orderByDesc('id')->first()
+    ]))
+        ->assertOk()
+        ->assertSeeText('Second Video');
 });
