@@ -62,3 +62,8 @@ it('includes logout if logged in', function () {
         ->assertSeeText('Logout')
         ->assertSee(route('logout'));
 });
+
+it('does not find JetStream registration page', function () {
+    // Act & Assert
+    get('register')->assertNotFound();
+});
