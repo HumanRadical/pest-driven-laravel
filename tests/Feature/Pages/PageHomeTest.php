@@ -53,5 +53,9 @@ it('includes login if not logged in', function () {
 });
 
 it('includes logout if logged in', function () {
-    //expect()->
+    // Act & Assert
+    get(route('pages.home'))
+        ->assertOk()
+        ->assertSeeText('Logout')
+        ->assertSee(route('logout'));
 });
