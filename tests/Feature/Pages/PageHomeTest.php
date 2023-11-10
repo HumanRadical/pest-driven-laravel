@@ -3,10 +3,7 @@
 use App\Models\Course;
 use Carbon\Carbon;
 
-
 use function Pest\Laravel\get;
-
-
 
 it('shows courses overview', function () {
     // Arrange

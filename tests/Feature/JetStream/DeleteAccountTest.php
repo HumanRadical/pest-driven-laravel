@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Laravel\Jetstream\Features;
 use Laravel\Jetstream\Http\Livewire\DeleteUserForm;
 use Livewire\Livewire;

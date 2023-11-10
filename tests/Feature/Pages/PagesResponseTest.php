@@ -1,12 +1,8 @@
 <?php
 
 use App\Models\Course;
-use App\Models\User;
-
 
 use function Pest\Laravel\get;
-
-
 
 it('returns a successful response for home page', function () {
     // Act & Assert

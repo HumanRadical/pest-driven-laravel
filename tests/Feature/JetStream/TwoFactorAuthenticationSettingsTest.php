@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Laravel\Fortify\Features;
 use Laravel\Jetstream\Http\Livewire\TwoFactorAuthenticationForm;
 use Livewire\Livewire;

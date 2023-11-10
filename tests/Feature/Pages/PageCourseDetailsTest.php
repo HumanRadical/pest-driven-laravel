@@ -3,10 +3,7 @@
 use App\Models\Course;
 use App\Models\Video;
 
-
 use function Pest\Laravel\get;
-
-
 
 it('does not show details for unreleased course', function () {
     $course = Course::factory()->create();
@@ -14,7 +11,6 @@ it('does not show details for unreleased course', function () {
     get(route('pages.course-details', $course))
         ->assertNotFound();
 });
-
 
 it('shows course details', function () {
     // Arrange

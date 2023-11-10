@@ -3,9 +3,6 @@
 use App\Models\Course;
 use App\Models\User;
 
-
-
-
 it('has courses', function () {
     // Arrange
     $user = User::factory()

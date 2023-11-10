@@ -11,7 +11,7 @@ class Course extends Model
     use HasFactory;
 
     public $casts = [
-        'learnings' => 'array'
+        'learnings' => 'array',
     ];
 
     public function videos()

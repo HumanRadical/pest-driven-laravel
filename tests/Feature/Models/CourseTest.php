@@ -3,9 +3,6 @@
 use App\Models\Course;
 use App\Models\Video;
 
-
-
-
 it('only returns released courses for released scope', function () {
     // Arrange
     Course::factory()->released()->create();
@@ -28,4 +25,3 @@ it('has videos', function () {
         ->toHaveCount(3)
         ->each->toBeInstanceOf(Video::class);
 });
-
