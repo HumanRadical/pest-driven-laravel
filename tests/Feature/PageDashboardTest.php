@@ -37,7 +37,15 @@ it('lists purchased courses', function () {
 });
 
 it('does not list unpurchased courses', function () {
-    //expect()->
+    // Arrange
+    $user = User::factory()->create();
+    $course = Course::factory()->create();
+
+    // Act & Arrange
+    $this->actingAs($user);
+    get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSeeText($course->title);
 });
 
 it('shows latest purchased course first', function () {
