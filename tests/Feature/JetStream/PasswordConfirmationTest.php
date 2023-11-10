@@ -3,20 +3,25 @@
 use App\Models\User;
 use Laravel\Jetstream\Features;
 
-test('confirm password screen can be rendered', function () {
-    $user = Features::hasTeamFeatures()
-                    ? User::factory()->withPersonalTeam()->create()
-                    : User::factory()->create();
+use function Pest\Laravel\get;
+use function Pest\Laravel\post;
 
-    $response = $this->actingAs($user)->get('/user/confirm-password');
+test('confirm password screen can be rendered', function () {
+    loginAsUser(
+        Features::hasTeamFeatures()
+            ? User::factory()->withPersonalTeam()->create()
+            : User::factory()->create()
+    );
+
+    $response = get('/user/confirm-password');
 
     $response->assertStatus(200);
 });
 
 test('password can be confirmed', function () {
-    $user = User::factory()->create();
+    loginAsUser();
 
-    $response = $this->actingAs($user)->post('/user/confirm-password', [
+    $response = post('/user/confirm-password', [
         'password' => 'password',
     ]);
 
@@ -25,9 +30,9 @@ test('password can be confirmed', function () {
 });
 
 test('password is not confirmed with invalid password', function () {
-    $user = User::factory()->create();
+    loginAsUser();
 
-    $response = $this->actingAs($user)->post('/user/confirm-password', [
+    $response = post('/user/confirm-password', [
         'password' => 'wrong-password',
     ]);
 

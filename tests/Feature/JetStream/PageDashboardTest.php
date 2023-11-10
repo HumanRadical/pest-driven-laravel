@@ -18,17 +18,18 @@ it('cannot be accessed by a guest', function () {
 
 it('lists purchased courses', function () {
     // Arrange
-    $user = User::factory()
+    loginAsUser(
+        User::factory()
         ->has(Course::factory(2)->state(
             new Sequence(
                 ['title' => 'Course A'],
                 ['title' => 'Course B'],
             )
         ))
-        ->create();
+        ->create()
+    );
 
     // Act & Assert
-    $this->actingAs($user);
     get(route('pages.dashboard'))
         ->assertOk()
         ->assertSeeText([
@@ -39,11 +40,10 @@ it('lists purchased courses', function () {
 
 it('does not list unpurchased courses', function () {
     // Arrange
-    $user = User::factory()->create();
+    loginAsUser();
     $course = Course::factory()->create();
 
     // Act & Arrange
-    $this->actingAs($user);
     get(route('pages.dashboard'))
         ->assertOk()
         ->assertDontSeeText($course->title);
@@ -51,7 +51,7 @@ it('does not list unpurchased courses', function () {
 
 it('shows latest purchased course first', function () {
     // Arrange
-    $user = User::factory()->create();
+    $user = loginAsUser();
     $firstPurchasedCourse = Course::factory()->create();
     $lastPurchasedCourse = Course::factory()->create();
 
@@ -59,7 +59,6 @@ it('shows latest purchased course first', function () {
     $user->courses()->attach($lastPurchasedCourse, ['created_at' => Carbon::now()]);
 
     // Act & Assert
-    $this->actingAs($user);
     get(route('pages.dashboard'))
         ->assertOk()
         ->assertSeeInOrder([
@@ -70,12 +69,13 @@ it('shows latest purchased course first', function () {
 
 it('includes link to course videos', function () {
     // Arrange
-    $user = User::factory()
-        ->has(Course::factory())
-        ->create();
+    loginAsUser(
+        User::factory()
+            ->has(Course::factory())
+            ->create()
+    );
 
     // Act & Assert
-    $this->actingAs($user);
     get(route('pages.dashboard'))
         ->assertOk()
         ->assertSeeText('Watch videos')

@@ -25,10 +25,9 @@ it('returns a successful response for course details page', function () {
 
 it('returns a successful response for dashboard page', function () {
     //Arrange
-    $user = User::factory()->create();
+    loginAsUser();
 
     // Act & Assert
-    $this->actingAs($user);
     get(route('pages.dashboard'))
         ->assertOk();
 });
