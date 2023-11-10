@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Course;
+use App\Models\Video;
 
 use function Pest\Laravel\get;
 
@@ -25,5 +26,17 @@ it('returns a successful response for dashboard page', function () {
 
     // Act & Assert
     get(route('pages.dashboard'))
+        ->assertOk();
+});
+
+it('returns a successful response for course videos page', function () {
+    //Arrange
+    loginAsUser();
+    $course = Course::factory()
+        ->has(Video::factory())
+        ->create();
+
+    // Act & Assert
+    get(route('pages.course-videos', $course))
         ->assertOk();
 });
