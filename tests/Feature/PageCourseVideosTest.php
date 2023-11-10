@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\VideoPlayer;
 use App\Models\Course;
 
 use function Pest\Laravel\get;
