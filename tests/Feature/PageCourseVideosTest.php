@@ -2,6 +2,7 @@
 
 use App\Livewire\VideoPlayer;
 use App\Models\Course;
+use App\Models\Video;
 
 use function Pest\Laravel\get;
 
@@ -26,7 +27,16 @@ it('includes video player', function () {
 });
 
 it('shows first course video by default', function () {
-    //expect()->
+    // Arrange
+    loginAsUser();
+    $course = Course::factory()
+        ->has(Video::factory()->state(['title' => 'My Video']))
+        ->create();
+
+    // Act & Assert
+    get(route('pages.course-videos', $course))
+        ->assertOk()
+        ->assertSeeText('My Video');
 });
 
 it('shows provided course video', function () {
