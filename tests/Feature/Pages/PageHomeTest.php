@@ -53,6 +53,9 @@ it('includes login if not logged in', function () {
 });
 
 it('includes logout if logged in', function () {
+    // Arrange
+    loginAsUser();
+
     // Act & Assert
     get(route('pages.home'))
         ->assertOk()
