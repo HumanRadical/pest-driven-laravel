@@ -68,6 +68,16 @@ it('shows latest purchased course first', function () {
         ]);
 });
 
-it('includes link to product videos', function () {
-    //expect()->
+it('includes link to course videos', function () {
+    // Arrange
+    $user = User::factory()
+        ->has(Course::factory())
+        ->create();
+
+    // Act & Assert
+    $this->actingAs($user);
+    get(route('dashboard'))
+        ->assertOk()
+        ->assertSeeText('Watch videos')
+        ->assertSee(route('page.course-videos', Course::first()));
 });
