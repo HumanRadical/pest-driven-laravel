@@ -9,7 +9,9 @@ use function Pest\Laravel\get;
 
 it('cannot be accessed by guest', function () {
     // Arrange
-    $course = Course::factory()->create();
+    $course = Course::factory()
+        ->has(Video::factory())
+        ->create();
 
     // Act & Assert
     get(route('pages.course-videos', $course))
@@ -19,7 +21,9 @@ it('cannot be accessed by guest', function () {
 it('includes video player', function () {
     // Arrange
     loginAsUser();
-    $course = Course::factory()->create();
+    $course = Course::factory()
+        ->has(Video::factory())
+        ->create();
 
     // Act & Assert
     get(route('pages.course-videos', $course))
