@@ -17,6 +17,7 @@ class VideoFactory extends Factory
     public function definition(): array
     {
         return [
+            'course_id' => Course::factory(),
             'slug' => fake()->slug(),
             'vimeo_id' => fake()->uuid(),
             'title' => fake()->sentence(3),
