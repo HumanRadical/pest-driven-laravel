@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignIdFor(Course::class);
             $table->string('slug');
             $table->string('title');
+            $table->text('description');
+            $table->integer('duration');
             $table->timestamps();
         });
     }
