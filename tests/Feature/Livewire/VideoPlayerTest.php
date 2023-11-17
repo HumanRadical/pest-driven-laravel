@@ -30,5 +30,5 @@ it('shows given video', function () {
     // Act & Assert
     $video = $course->videos->first();
     Livewire::test(VideoPlayer::class, ['video' => $video])
-        ->assertSee('<iframe src="https://player.vimeo.com/video/' . $video->vimeo_id . '"', false);
+        ->assertSeeHtml('<iframe src="https://player.vimeo.com/video/' . $video->vimeo_id . '"');
 });
