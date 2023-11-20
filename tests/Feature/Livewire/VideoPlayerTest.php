@@ -73,6 +73,7 @@ it('marks video as completed', function () {
     Livewire::test(VideoPlayer::class, ['video' => $course->videos()->first()])
         ->call('markVideoAsCompleted');
     
+    $user->refresh();
     expect($user->videos)
         ->toHaveCount(1)
         ->first()->title->toEqual('Course video');
