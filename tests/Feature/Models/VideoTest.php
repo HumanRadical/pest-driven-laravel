@@ -11,7 +11,7 @@ it('gives back readable video duration', function () {
     expect($video->getReadableDuration())->toEqual('10min');
 });
 
-it('has courses', function () {
+it('belongs to a course', function () {
     // Arrange
     $video = Video::factory()
         ->has(Course::factory())
