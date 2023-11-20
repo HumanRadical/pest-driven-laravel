@@ -58,7 +58,7 @@ it('shows provided course video', function () {
     // Act & Assert
     get(route('pages.course-videos', [
         'course' => $course,
-        'video' => $course->videos()->orderByDesc('id')->first()
+        'video' => $course->videos()->orderByDesc('id')->first(),
     ]))
         ->assertOk()
         ->assertSeeText('Second Video');
