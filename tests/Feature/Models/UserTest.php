@@ -19,11 +19,11 @@ it('has courses', function () {
 it('has videos', function () {
     // Arrange
     $user = User::factory()
-        ->has(Video::factory(2), 'videos')
+        ->has(Video::factory(2), 'watchedVideos')
         ->create();
 
     // Act & Assert
-    expect($user->videos)
+    expect($user->watchedVideos)
         ->toHaveCount(2)
         ->each->toBeInstanceOf(Video::class);
 });
