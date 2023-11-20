@@ -67,7 +67,7 @@ class User extends Authenticatable
             ->orderByDesc('pivot_created_at');
     }
 
-    public function videos(): BelongsToMany
+    public function watchedVideos(): BelongsToMany
     {
         return $this->belongsToMany(Video::class, 'watched_videos')
             ->withTimestamps();

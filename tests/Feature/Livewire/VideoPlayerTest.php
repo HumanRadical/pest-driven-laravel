@@ -61,14 +61,14 @@ it('marks video as completed', function () {
     $user->courses()->attach($course);
 
     // Assert
-    expect($user->videos)->toHaveCount(0);
+    expect($user->watchedVideos)->toHaveCount(0);
 
     // Act & Assert
     Livewire::test(VideoPlayer::class, ['video' => $course->videos()->first()])
         ->call('markVideoAsCompleted');
     
     $user->refresh();
-    expect($user->videos)
+    expect($user->watchedVideos)
         ->toHaveCount(1)
         ->first()->title->toEqual($course->videos()->first()->title);
 });
@@ -81,15 +81,15 @@ it('marks video as not completed', function () {
         ->create();
 
     $user->courses()->attach($course);
-    $user->videos()->attach($course->videos()->first());
+    $user->watchedVideos()->attach($course->videos()->first());
 
     // Assert
-    expect($user->videos)->toHaveCount(1);
+    expect($user->watchedVideos)->toHaveCount(1);
 
     // Act & Assert
     Livewire::test(VideoPlayer::class, ['video' => $course->videos()->first()])
         ->call('markVideoAsNotCompleted');
 
     $user->refresh();
-    expect($user->videos)->toHaveCount(0);
+    expect($user->watchedVideos)->toHaveCount(0);
 });
