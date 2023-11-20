@@ -97,7 +97,5 @@ it('marks video as not completed', function () {
         ->call('markVideoAsNotCompleted');
 
     $user->refresh();
-    expect($user->videos)
-        ->toHaveCount(0)
-        ->first()->title->toEqual('Course video');
+    expect($user->videos)->toHaveCount(0);
 });
