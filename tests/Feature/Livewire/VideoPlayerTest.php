@@ -3,6 +3,7 @@
 use App\Livewire\VideoPlayer;
 use App\Models\Course;
 use App\Models\Video;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Livewire\Livewire;
 
 it('shows details for given video', function () {
