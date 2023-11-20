@@ -60,7 +60,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function courses(): BelongsToMany
+    public function purchasedCourses(): BelongsToMany
     {
         return $this->belongsToMany(Course::class, 'purchased_courses')
             ->withTimestamps()
