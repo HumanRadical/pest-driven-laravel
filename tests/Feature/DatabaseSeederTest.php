@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Course;
+use App\Models\Video;
 
 it('adds given courses', function () {
     // Assert
@@ -29,13 +30,39 @@ it('adds given courses only once', function () {
 });
 
 it('adds given videos', function () {
-    // Arrange
+    // Assert
+    $this->assertDatabaseCount(Video::class, 0);
 
-    // Act & Assert
+    // Act
+    $this->artisan('db:seed');
+
+    // Assert
+    $laravelForBeginnersCourse = Course::where('title', 'Laravel For Beginners')->firstOrFail();
+    $advancedLaravelCourse = Course::where('title', 'Advanced Laravel')->firstOrFail();
+    $tddTheLaravelWayCourse = Course::where('title', 'TDD the Laravel Way')->firstOrFail();
+
+    expect($laravelForBeginnersCourse)
+        ->videos
+        ->toHaveCount(3);
+
+    expect($advancedLaravelCourse)
+        ->videos
+        ->toHaveCount(3);
+
+    expect($tddTheLaravelWayCourse)
+        ->videos
+        ->toHaveCount(2);
+
+    $this->assertDatabaseCount(Video::class, 8);
 });
 
 it('adds given videos only once', function () {
-    // Arrange
+    // Assert
+    $this->assertDatabaseCount(Video::class, 0);
 
-    // Act & Assert
+    // Act
+    $this->artisan('db:seed');
+    $this->artisan('db:seed');
+
+    $this->assertDatabaseCount(Video::class, 8);
 });
