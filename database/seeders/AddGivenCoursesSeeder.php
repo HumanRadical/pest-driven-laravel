@@ -47,7 +47,7 @@ class AddGivenCoursesSeeder extends Seeder
             'title' => 'TDD the Laravel Way',
             'tagline' => 'Give testing the importance it deserves',
             'description' => 'A video course to teach you test-driven development in a Laravel application. TDD is not something you can just do. It takes time and practice. In this course, I will show you how to get started.',
-            'image_name' => 'tdd_the_laravel_way.png',
+            'image' => 'tdd_the_laravel_way.png',
             'learnings' => [
                 'What TDD is',
                 'How to use TDD in Laravel',
