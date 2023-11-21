@@ -19,4 +19,9 @@ class Video extends Model
     {
         return Str::of($this->durationInMins)->append('min');
     }
+    
+    public function alreadyWatchedByCurrentUser(): bool
+    {
+        return (bool) auth()->user()->watchedVideos()->where('video_id', $this->id)->count();
+    }
 }
