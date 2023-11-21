@@ -3,14 +3,18 @@
 use App\Livewire\VideoPlayer;
 use App\Models\Course;
 use App\Models\Video;
-use Illuminate\Database\Eloquent\Factories\Sequence;
 use Livewire\Livewire;
+
+function createCourseAndVideos(int $videosCount = 1): Course
+{
+    return Course::factory()
+        ->has(Video::factory($videosCount))
+        ->create();
+}
 
 it('shows details for given video', function () {
     // Arrange
-    $course = Course::factory()
-        ->has(Video::factory())
-        ->create();
+    $course = createCourseAndVideos();
 
     // Act & Assert
     $video = $course->videos->first();
@@ -24,9 +28,7 @@ it('shows details for given video', function () {
 
 it('shows given video', function () {
     // Arrange
-    $course = Course::factory()
-        ->has(Video::factory())
-        ->create();
+    $course = createCourseAndVideos();
 
     // Act & Assert
     $video = $course->videos->first();
@@ -36,9 +38,7 @@ it('shows given video', function () {
 
 it('shows list of all course videos', function () {
     // Arrange
-    $course = Course::factory()
-        ->has(Video::factory(3))
-        ->create();
+    $course = createCourseAndVideos(videosCount: 3);
 
     // Act & Assert
     Livewire::test(VideoPlayer::class, ['video' => $course->videos()->first()])
@@ -54,9 +54,7 @@ it('shows list of all course videos', function () {
 it('marks video as completed', function () {
     // Arrange
     $user = loginAsUser();
-    $course = Course::factory()
-        ->has(Video::factory())
-        ->create();
+    $course = createCourseAndVideos();
 
     $user->purchasedCourses()->attach($course);
 
@@ -76,9 +74,7 @@ it('marks video as completed', function () {
 it('marks video as not completed', function () {
     // Arrange
     $user = loginAsUser();
-    $course = Course::factory()
-        ->has(Video::factory())
-        ->create();
+    $course = createCourseAndVideos();
 
     $user->purchasedCourses()->attach($course);
     $user->watchedVideos()->attach($course->videos()->first());
