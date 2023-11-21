@@ -1,5 +1,8 @@
 <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
 <script type="text/javascript">
+    @env('local')
+        Paddle.Environment.set('sandbox')
+    @endenv
     Paddle.Setup({ vendor: {{ config('services.paddle.vendor-id') }} })
 </script>
 
