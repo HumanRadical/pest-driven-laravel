@@ -12,6 +12,10 @@
             </div>
         @endif
 
+        @env('local')
+            <x-login-link email="test@test.at" label="Login as test user" />
+        @endenv
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
