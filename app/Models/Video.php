@@ -17,7 +17,7 @@ class Video extends Model
 
     public function getReadableDuration(): string
     {
-        return Str::of($this->durationInMins)->append('min');
+        return Str::of($this->duration_in_mins)->append('min');
     }
     
     public function alreadyWatchedByCurrentUser(): bool

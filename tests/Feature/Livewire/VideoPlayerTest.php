@@ -26,7 +26,7 @@ it('shows details for given video', function () {
         ->assertSeeText([
             $video->title,
             $video->description,
-            "{$video->durationInMins}min",
+            "{$video->duration_in_mins}min",
         ]);
 });
 
@@ -49,8 +49,14 @@ it('shows list of all course videos', function () {
         ->assertSee([
             ...$course->videos->pluck('title')->toArray()
         ])->assertSeeHtml([
-            route('pages.course-videos', $course->videos[1]),
-            route('pages.course-videos', $course->videos[2]),
+            route('pages.course-videos', [
+                'course' => $course,
+                'video' => $course->videos[1],
+            ]),
+            route('pages.course-videos', [
+                'course' => $course,
+                'video' => $course->videos[2],
+            ]),
         ]);
 });
 
