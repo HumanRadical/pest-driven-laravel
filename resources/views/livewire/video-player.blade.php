@@ -6,8 +6,12 @@
     
     <ul>
         @foreach ($courseVideos as $courseVideo)
-        <a href="{{ route('pages.course-videos', $courseVideo) }}"></a>
-            <li>{{ $courseVideo->title }}</li>
+            @if ($this->video->id === $courseVideo->id)
+                {{ $courseVideo->title }}
+            @else 
+                <a href="{{ route('pages.course-videos', $courseVideo) }}"></a>
+                <li>{{ $courseVideo->title }}</li>
+            @endif
         @endforeach
     </ul>
 </div>
