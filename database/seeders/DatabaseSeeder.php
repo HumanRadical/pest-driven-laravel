@@ -10,5 +10,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AddGivenCoursesSeeder::class);
         $this->call(AddGivenVideosSeeder::class);
+        $this->call(AddLocalTestUserSeeder::class);
     }
 }
