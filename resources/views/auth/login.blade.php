@@ -13,7 +13,11 @@
         @endif
 
         @env('local')
-            <x-login-link email="test@test.at" label="Login as test user" />
+            <x-login-link 
+                email="test@test.at" 
+                label="Login as test user" 
+                redirect-url="{{ route('pages.dashboard') }}"
+            />
         @endenv
 
         <form method="POST" action="{{ route('login') }}">
