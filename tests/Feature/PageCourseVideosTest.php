@@ -41,7 +41,7 @@ it('shows first course video by default', function () {
     // Act & Assert
     get(route('pages.course-videos', $course))
         ->assertOk()
-        ->assertSeeText($course->videos()->first()->title);
+        ->assertSee("<h3>{$course->videos()->first()->title}", false);
 });
 
 it('shows provided course video', function () {
