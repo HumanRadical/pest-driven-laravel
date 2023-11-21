@@ -35,13 +35,13 @@ it('shows first course video by default', function () {
     // Arrange
     loginAsUser();
     $course = Course::factory()
-        ->has(Video::factory()->state(['title' => 'My Video']))
+        ->has(Video::factory())
         ->create();
 
     // Act & Assert
     get(route('pages.course-videos', $course))
         ->assertOk()
-        ->assertSeeText('My Video');
+        ->assertSeeText($course->videos()->first()->title);
 });
 
 it('shows provided course video', function () {
