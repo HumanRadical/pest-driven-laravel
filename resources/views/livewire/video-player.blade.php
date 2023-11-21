@@ -6,7 +6,7 @@
     
     <ul>
         @foreach ($courseVideos as $courseVideo)
-            @if ($this->video->id === $courseVideo->id)
+            @if ($this->isCurrentVideo($courseVideo))
                 {{ $courseVideo->title }}
             @else 
                 <a href="{{ route('pages.course-videos', $courseVideo) }}"></a>
