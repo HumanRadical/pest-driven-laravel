@@ -49,7 +49,7 @@ it('includes paddle checkout button', function () {
     $course = Course::factory()
         ->released()
         ->create([
-            'paddle_product_id' => 'product-id'
+            'paddle_product_id' => 'product-id',
         ]);
 
     get(route('pages.course-details', $course))
@@ -58,4 +58,3 @@ it('includes paddle checkout button', function () {
         ->assertSee('Paddle.Setup({ vendor: vendor-id })', false)
         ->assertSee('<a href="#!" class="paddle_button" data-product="product-id">Buy Now!</a>', false);
 });
-

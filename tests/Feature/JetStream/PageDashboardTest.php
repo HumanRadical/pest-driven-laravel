@@ -18,8 +18,8 @@ it('lists purchased courses', function () {
     loginAsUser(
         User::factory()
             ->has(Course::factory(2)->state(new Sequence(
-                    ['title' => 'Course A'],
-                    ['title' => 'Course B'],
+                ['title' => 'Course A'],
+                ['title' => 'Course B'],
             )), 'purchasedCourses')
             ->create()
     );

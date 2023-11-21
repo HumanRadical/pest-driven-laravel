@@ -12,7 +12,7 @@ function createCourseAndVideos(int $videosCount = 1): Course
         ->create();
 }
 
-beforeEach(function() {
+beforeEach(function () {
     $this->loggedInUser = loginAsUser();
 });
 
@@ -47,7 +47,7 @@ it('shows list of all course videos', function () {
     // Act & Assert
     Livewire::test(VideoPlayer::class, ['video' => $course->videos()->first()])
         ->assertSee([
-            ...$course->videos->pluck('title')->toArray()
+            ...$course->videos->pluck('title')->toArray(),
         ])->assertSeeHtml([
             route('pages.course-videos', [
                 'course' => $course,
@@ -69,7 +69,6 @@ it('does not include route for current video', function () {
         ->assertDontSeeHtml(route('pages.course-videos', $course->videos()->first()));
 });
 
-
 it('marks video as completed', function () {
     // Arrange
     $course = createCourseAndVideos();
@@ -86,7 +85,7 @@ it('marks video as completed', function () {
         ->call('markVideoAsCompleted')
         ->assertMethodNotWired('markVideoAsCompleted')
         ->assertMethodWired('markVideoAsNotCompleted');
-    
+
     $this->loggedInUser->refresh();
     expect($this->loggedInUser->watchedVideos)
         ->toHaveCount(1)
