@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\App;
 
 it('adds given courses', function () {
     // Assert
-    $this->assertDatabaseCount(Course::class, 0);
+    $this->assertDatabaseEmpty(Course::class);
 
     // Act
     $this->artisan('db:seed');
@@ -21,7 +21,7 @@ it('adds given courses', function () {
 
 it('adds given courses only once', function () {
     // Assert
-    $this->assertDatabaseCount(Course::class, 0);
+    $this->assertDatabaseEmpty(Course::class);
 
     // Act
     $this->artisan('db:seed');
@@ -33,7 +33,7 @@ it('adds given courses only once', function () {
 
 it('adds given videos', function () {
     // Assert
-    $this->assertDatabaseCount(Video::class, 0);
+    $this->assertDatabaseEmpty(Video::class);
 
     // Act
     $this->artisan('db:seed');
@@ -60,7 +60,7 @@ it('adds given videos', function () {
 
 it('adds given videos only once', function () {
     // Assert
-    $this->assertDatabaseCount(Video::class, 0);
+    $this->assertDatabaseEmpty(Video::class);
 
     // Act
     $this->artisan('db:seed');
@@ -74,7 +74,7 @@ it('adds local test user', function () {
     App::partialMock()->shouldReceive('environment')->andReturn('local');
 
     // Assert
-    $this->assertDatabaseCount(User::class, 0);
+    $this->assertDatabaseEmpty(User::class);
 
     // Act
     $this->artisan('db:seed');
@@ -88,11 +88,11 @@ it('does not add test user in production', function () {
     App::partialMock()->shouldReceive('environment')->andReturn('production');
 
     // Assert
-    $this->assertDatabaseCount(User::class, 0);
+    $this->assertDatabaseEmpty(User::class);
 
     // Act
     $this->artisan('db:seed');
 
     // Assert
-    $this->assertDatabaseCount(User::class, 0);
+    $this->assertDatabaseEmpty(User::class);
 });
