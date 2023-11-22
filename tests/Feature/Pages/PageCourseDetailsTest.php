@@ -58,3 +58,14 @@ it('includes paddle checkout button', function () {
         ->assertSee('Paddle.Setup({ vendor: vendor-id })', false)
         ->assertSee('<a href="#!" class="paddle_button" data-product="product-id">Buy Now!</a>', false);
 });
+
+it('includes title', function () {
+    // Arrange
+    $course = Course::factory()->released()->create();
+    $expectedTitle = config('app.name') . " - {$course->title}";
+
+    // Act & Assert
+    get(route('pages.course-details', $course))
+        ->assertOk()
+        ->assertSee("<title>{$expectedTitle}</title>", false);
+});
