@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Services\Twitter;
 
-class TwitterClient
+class TwitterClient implements TwitterClientInterface
 {
     public function __construct(protected TwitterOAuth $twitter)
     {

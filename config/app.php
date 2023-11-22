@@ -184,7 +184,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Twitter' => App\Facades\TwitterFacade::class,
+        'Twitter' => App\Services\Twitter\TwitterFacade::class,
     ])->toArray(),
 
 ];
