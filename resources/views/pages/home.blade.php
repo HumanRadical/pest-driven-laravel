@@ -1,4 +1,18 @@
 <x-guest-layout :page-title="config('app.name') . ' - Home'">
+    @push('social-meta')
+        <meta name="description" content="LaravelCasts is the leading learning platform for Laravel developers.">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ route('page.home') }}">
+        <meta property="og:title" content="LaravelCasts">
+        <meta property="og:description" content="LaravelCasts is the leading learning platform for Laravel developers.">
+        <meta property="og:image" content="{{ asset('images/social.png') }}">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+    @endpush
+
     @guest
         <a href="{{ route('login') }}">Login</a>
     @else
