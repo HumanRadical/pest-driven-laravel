@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1debd627ebe1c6c63d477f3d223b319b",
+    "content-hash": "24def2e6e98708133812403fda9354a3",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -7584,6 +7584,74 @@
                 }
             ],
             "time": "2023-08-10T15:37:09+00:00"
+        },
+        {
+            "name": "pestphp/pest-plugin-mock",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pestphp/pest-plugin-mock.git",
+                "reference": "5b5535a7cfbb8ddf071285ede1019213198e87d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pestphp/pest-plugin-mock/zipball/5b5535a7cfbb8ddf071285ede1019213198e87d4",
+                "reference": "5b5535a7cfbb8ddf071285ede1019213198e87d4",
+                "shasum": ""
+            },
+            "require": {
+                "mockery/mockery": "^1.5.1",
+                "pestphp/pest": "^2.0.0",
+                "pestphp/pest-plugin": "^2.0.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "pestphp/pest-dev-tools": "^2.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Autoload.php"
+                ],
+                "psr-4": {
+                    "Pest\\Mock\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Adds mocking capabilities to Pest or PHPUnit",
+            "keywords": [
+                "framework",
+                "mock",
+                "mocking",
+                "pest",
+                "php",
+                "plugin",
+                "test",
+                "testing",
+                "unit"
+            ],
+            "support": {
+                "source": "https://github.com/pestphp/pest-plugin-mock/tree/v2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
+            "abandoned": "mockery/mockery",
+            "time": "2023-03-20T10:00:51+00:00"
         },
         {
             "name": "phar-io/manifest",
