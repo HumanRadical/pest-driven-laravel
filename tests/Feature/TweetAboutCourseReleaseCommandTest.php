@@ -12,6 +12,5 @@ it('tweets about release for provided course', function () {
     $this->artisan(TweetAboutCourseReleaseCommand::class, ['courseId' => $course->id]);
 
     // Assert
-    Twitter::assertTweetSent("I just released {$course->title} 🎉 Check it out on " . route('pages.course-details', $course));
+    Twitter::assertTweetSent("I just released {$course->title} 🎉 Check it out on ".route('pages.course-details', $course));
 });
-

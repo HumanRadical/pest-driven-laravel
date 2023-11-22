@@ -13,7 +13,7 @@ class TwitterFake
         $this->tweets[] = $status;
 
         return [
-            'status' => $status
+            'status' => $status,
         ];
     }
 
